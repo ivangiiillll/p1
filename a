@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consola de Juegos</title>
+</head>
+<body>
+
+<h1>Consola de Juegos</h1>
+
+<input type="password" id="password" placeholder="Contraseña">
+<button onclick="verificarContraseña()">Ingresar</button>
+
+<div id="consola" style="display:none;">
+    <h2>Selecciona un juego:</h2>
+    <button onclick="abrirEnlace('https://venge.io')">Venge.io</button>
+    <button onclick="abrirEnlace('https://www.minijuegos.com')">Minijuegos.com</button>
+    <button onclick="abrirEnlace('https://www.juegosfriv.com')">Juegosfriv.com</button>
+    <button onclick="abrirEnlace('https://www.stumbleguys.com')">Stumble Guys</button>
+    <button onclick="cerrarConsola()">Cerrar Sesión</button>
+</div>
+
+<script>
+    function verificarContraseña() {
+        var contraseña = document.getElementById("password").value;
+        if (contraseña === "34567") {
+            document.getElementById("password").value = ""; // Limpiar campo de contraseña
+            document.getElementById("consola").style.display = "block"; // Mostrar la consola
+        } else {
+            alert("Contraseña incorrecta. Acceso denegado.");
+        }
+    }
+
+    function abrirEnlace(enlace) {
+        navigator.clipboard.writeText(enlace); // Copiar enlace al portapapeles
+        alert("Enlace copiado al portapapeles: " + enlace);
+        // Aquí puedes agregar la lógica para abrir el enlace en una nueva pestaña si lo deseas
+        // Por ejemplo: window.open(enlace, '_blank');
+    }
+
+    function cerrarConsola() {
+        document.getElementById("consola").style.display = "none"; // Ocultar la consola
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial - Preguntas y Respuestas</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+        }
+        input[type="text"], textarea {
+            background-color: black;
+            color: red;
+            border: 1px solid red;
+        }
+        button {
+            background-color: red;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Inteligencia Artificial - Preguntas y Respuestas</h1>
+
+<div>
+    <label for="pregunta">Pregunta:</label>
+    <input type="text" id="pregunta" placeholder="Haz una pregunta">
+    <button onclick="ejecutarPregunta()">Ejecutar</button>
+</div>
+
+<div>
+    <label for="respuesta">Respuesta:</label>
+    <textarea id="respuesta" rows="4" cols="50" readonly></textarea>
+</div>
+
+<script>
+    // Definir las preguntas y respuestas
+    var preguntasRespuestas = {
+        "¿Cuál es la capital de Francia?": "París",
+        "¿Quien escribio 'Romeo y Julieta'?": "William Shakespeare",
+        "¿Cuál es el símbolo químico del agua?": "H2O",
+        "¿Cuál es la montaña mas alta del mundo?": "El Monte Everest",
+        "¿Quien pintó la Mona Lisa?": "Leonardo da Vinci",
+        "¿Cuál es el oceano más grande del mundo?": "El Océano Pacífico",
+        "¿Cuál es la capital de España?": "Madrid",
+        "¿Cuál es la formula química del oxigeno?": "O2",
+        "¿Quien fue el primer presidente de Estados Unidos?": "George Washington",
+        "¿Cuál es el animal terrestre mas grande del mundo?": "El elefante africano",
+        "¿Qué año comenzó la Primera Guerra Mundial?": "1914",
+        "¿Cuál es la capital de Japón?": "Tokio"
+    };
+
+    function ejecutarPregunta() {
+        var pregunta = document.getElementById("pregunta").value;
+        var respuesta = obtenerRespuesta(pregunta);
+        mostrarRespuesta(respuesta);
+    }
+
+    function obtenerRespuesta(pregunta) {
+        // Función para eliminar acentos
+        function quitarAcentos(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Convertir la pregunta ingresada a minúsculas y quitar acentos
+        pregunta = quitarAcentos(pregunta.toLowerCase());
+
+        // Buscar la respuesta en el diccionario de preguntas y respuestas
+        for (var key in preguntasRespuestas) {
+            var preguntaDiccionario = quitar
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inteligencia Artificial - Preguntas y Respuestas</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+        }
+        input[type="text"], textarea {
+            background-color: black;
+            color: red;
+            border: 1px solid red;
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: red;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Inteligencia Artificial - Preguntas y Respuestas</h1>
+
+<div>
+    <label for="pregunta">Pregunta:</label>
+    <input type="text" id="pregunta" placeholder="Haz una pregunta">
+    <button onclick="ejecutarPregunta()">Ejecutar</button>
+</div>
+
+<div>
+    <label for="respuesta">Respuesta:</label>
+    <textarea id="respuesta" rows="4" cols="50" readonly></textarea>
+</div>
+
+<div>
+    <label for="comando">Comando:</label>
+    <input type="text" id="comando" placeholder="Escribe un comando">
+    <button onclick="ejecutarComando()">Ejecutar</button>
+</div>
+
+<script>
+    // Definir las preguntas y respuestas
+    var preguntasRespuestas = {
+        "¿Cuál es la capital de Francia?": "París",
+        "¿Quien escribio 'Romeo y Julieta'?": "William Shakespeare",
+        "¿Cuál es el símbolo químico del agua?": "H2O",
+        "¿Cuál es la montaña mas alta del mundo?": "El Monte Everest",
+        "¿Quien pintó la Mona Lisa?": "Leonardo da Vinci",
+        "¿Cuál es el oceano más grande del mundo?": "El Océano Pacífico",
+        "¿Cuál es la capital de España?": "Madrid",
+        "¿Cuál es la formula química del oxigeno?": "O2",
+        "¿Quien fue el primer presidente de Estados Unidos?": "George Washington",
+        "¿Cuál es el animal terrestre mas grande del mundo?": "El elefante africano",
+        "¿Qué año comenzó la Primera Guerra Mundial?": "1914",
+        "¿Cuál es la capital de Japón?": "Tokio"
+    };
+
+    function ejecutarPregunta() {
+        var pregunta = document.getElementById("pregunta").value;
+        var respuesta = obtenerRespuesta(pregunta);
+        mostrarRespuesta(respuesta);
+    }
+
+    function ejecutarComando() {
+        var comando = document.getElementById("comando").value;
+        if (comando === "about:blank") {
+            abrirNuevaPestana();
+        } else {
+            alert("Comando desconocido.");
+        }
+    }
+
+    function obtenerRespuesta(pregunta) {
+        // Función para eliminar acentos y convertir a minúsculas
+        function normalizarTexto(texto) {
+            return texto.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+        }
+
+        // Convertir la pregunta ingresada a minúsculas y normalizar
+        pregunta = normalizarTexto(pregunta);
+
+        // Buscar la respuesta en el diccionario de preguntas y respuestas
+        for (var key in preguntasRespuestas) {
+            var preguntaDiccionario = normalizarTexto(key);
+            if (preguntaDiccionario === pregunta) {
+                return preguntasRespuestas[key];
+            }
+        }
+
+        return "Lo siento, no tengo una respuesta para esa pregunta.";
+    }
+
+    function mostrarRespuesta(respuesta) {
+        document.getElementById("respuesta").value = respuesta;
+    }
+
+    function abrirNuevaPestana() {
+        window.open("about:blank", "_blank");
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consola de Comandos</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #consola {
+            background-color: black;
+            color: red;
+            border: 1px solid red;
+            padding: 10px;
+            width: 80%;
+            margin: 50px auto;
+        }
+        input[type="text"] {
+            background-color: black;
+            color: red;
+            border: none;
+            border-bottom: 1px solid red;
+            width: 80%;
+            padding: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-bottom-color: yellow;
+        }
+        button {
+            background-color: red;
+            color: black;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consola de Comandos</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #consola {
+            background-color: black;
+            color: red;
+            border: 1px solid red;
+            padding: 10px;
+            width: 80%;
+            margin: 50px auto;
+        }
+        input[type="text"] {
+            background-color: black;
+            color: red;
+            border: none;
+            border-bottom: 1px solid red;
+            width: 80%;
+            padding: 5px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+        input[type="text"]:focus {
+            border-bottom-color: yellow;
+        }
+        button {
+            background-color: red;
+            color: black;
+            border: none;
+            padding: 8px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="consola">
+    <input type="text" id="inputComando" placeholder="Escribe un comando">
+    <br>
+    <button onclick="ejecutarComando()">Ejecutar</button>
+</div>
+
+<script>
+    function ejecutarComando() {
+        var comando = document.getElementById("inputComando").value.trim();
+        if (comando === "about:blank") {
+            window.open("about:blank", "_blank");
+        } else {
+            alert("Comando desconocido.");
+        }
+    }
+</script>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenor - Asistente de Voz</title>
+</head>
+<body>
+    <div id="consola">
+        <input type="text" id="inputComando" placeholder="Escribe un comando">
+        <br>
+        <button onclick="iniciarReconocimientoVoz()">Activar Reconocimiento de Voz (Tenor)</button>
+    </div>
+
+    <script>
+        // Configurar reconocimiento de voz
+        var recognition = new webkitSpeechRecognition();
+        recognition.lang = 'es-ES';
+
+        recognition.onresult = function(event) {
+            var resultado = event.results[0][0].transcript.trim();
+            document.getElementById("inputComando").value = resultado;
+        }
+
+        recognition.onerror = function(event) {
+            alert("Error en el reconocimiento de voz. Por favor, intenta de nuevo.");
+        }
+
+        function iniciarReconocimientoVoz() {
+            recognition.start();
+        }
+    </script>
+<
